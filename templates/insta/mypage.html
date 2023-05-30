@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container" align="center">
+    <a class="item_1" href="{% url 'insta:top' %}">TOP</a>
+    <a class="item_1" href="{% url 'insta:search' %}">SEARCH</a>
+    <a class="item_1" href="{% url 'insta:post_create' %}">CREATE</a>
+    <a class="item_1" href="{% url 'insta:my_page' %}">MYPAGE</a>
+</div>
+
+<hr>
+
+<h1 align="center">{{ user.username }} MYPAGE</h1>
+
+<br>
+
+<!--<style>-->
+<!--    .float{-->
+<!--        float: left;-->
+<!--        margin-right: 20px;-->
+<!--    }-->
+<!--</style>-->
+
+<div class="container">
+    <div class="item_1">
+        <img width="300" src="{{ user.bio.url }}" />
+    </div>
+
+    <div>
+     {{ follow_list | length }}
+     {{ follower_list | length }}
+    </div>
+
+    <form action="{% url 'insta:follow_list' post.id %}" method="post">
+        {% csrf_token %}
+        <input type="submit" value="FOLLOW">
+    </form>
+
+    <div class="item_1">
+        {{ user.username }}
+        <br>
+        {{ user.profile }}
+    </div>
+</div>
+
+<div align="center"><a href="{% url 'insta:my_page_update' %}">プロフィールを編集する</a></div>
+<div align="center"><a href="{% url 'insta:bookmark' %}">BOOKMARK</a></div>
+
+<hr>
+
+<article>
+
+{% for post in post_list %}
+    <img src="{{ post.image.url }}"/>
+    <div><a href="{% url 'insta:user_page' post.id %}">@{{ post.user.username }}</a></div>
+{% endfor %}
+
+</article>
+
+{% endblock %}

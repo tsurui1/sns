@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+ 
+{% block content %}
+<div><a href="{% url 'insta:my_page' %}">BACK</a></div>
+<h3>プロフィールを編集する</h3>
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" id="save" value="完了">
+</form>
+ 
+{% endblock %}

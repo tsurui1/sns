@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div><a href="{% url 'insta:my_post' %}">BACK</a></div>
+
+<hr>
+
+<h3>{{ user.username }}</h3>
+
+<hr>
+
+<article>
+    <h4>@{{ post.user.username }}</h4>
+    <img src="{{ post.image.url }}" />
+    <div>{{ post.caption }}</div>
+    <div>{{ post.created_at }}</div>
+    <div><a href="{% url 'insta:post_delete' post.id %}">DELETE</a></div>
+</article>
+
+<hr>
+
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">送信</button>
+</form>
+
+<hr>
+
+{% for chat in chat_list %}
+<article>
+    <div>@{{ chat.user.username }}</div>
+    <div>{{ chat.comment }}</div>
+    <div>{{ chat.created_at }}</div>
+
+    <hr>
+
+    {% for reply in chat.reply_set.all %}
+    <div style="margin-left:20px">
+        <div>@{{ reply.user.username }}</div>
+        <div>{{ reply.comment }}</div>
+        <div>{{ reply.created_at }}</div>
+    </div>
+    <hr>
+    {% endfor %}
+
+    <div><a href="{% url 'insta:post_reply' post.id %}">返信する</a></div>
+
+</article>
+
+<hr>
+
+{% endfor %}
+
+
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+ 
+{% block content %}
+<form method="post">{% csrf_token %}
+    <p>"{{ object }}"を削除してもよろしいですか?</p>
+    <input type="submit" value="DELETE">
+</form>
+
+<hr>
+<div>
+    <a href="{% url 'insta:my_page' %}">MYPAGE</a>
+    <a href="{% url 'insta:top' %}">TOP</a>
+</div>
+ 
+{% endblock %}

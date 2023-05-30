@@ -1,0 +1,7 @@
+<h2>ユーザー作成ページ</h2>
+<form method="POST">
+    {% csrf_token %}
+
+    {{ form.as_p }}
+    <input type="submit" id="save" value="作成">
+</form>

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+ 
+{% block content %}
+<div><a href="{% url 'insta:top' %}">TOP</a></div>
+
+{% for post in post_list %}
+<article>
+  <div>{{ post.user }}</div>
+  <div>{{ post.created_at }}</div>
+  <hr>
+{% endfor %}
+ 
+{% endblock %}

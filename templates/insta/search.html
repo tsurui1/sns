@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h4>SEARCH</h4>
+
+<div><a href="{% url 'insta:top' %}">TOP</a></div>
+<div><a href="{% url 'insta:search' %}">SEARCH</a></div>
+<div><a href="{% url 'insta:post_create' %}">CREATE</a></div>
+<div><a href="{% url 'insta:my_page' %}">MYPAGE</a></div>
+
+<hr>
+
+<form method="GET">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">送信</button>
+</form>
+
+<hr>
+
+{% for post in post_list %}
+    <img src="{{ post.image.url }}" />
+{% endfor %}
+
+
+<hr>
+
+{% if page_obj.has_previous %}
+    <a href="?page={{ page_obj.previous_page_number }}">前のページへ</a>
+{% endif %}
+
+{% for link_page in page_obj.paginator.page_range %}
+    {% if link_page == page_obj.number %}
+        <span>{{ link_page }}</span>
+    {% else %}
+       <a href="?page={{ link_page }}">{{ link_page }}</a>
+    {% endif %}
+{% endfor %}
+
+{% if page_obj.has_next %}
+    <a href="?page={{ page_obj.next_page_number }}">次のページへ</a>
+{% endif %}
+
+{% endblock %}

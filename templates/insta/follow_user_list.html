@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+ 
+{% block content %}
+<div><a href="{% url 'insta:top' %}">TOP</a></div>
+<hr>
+
+{% for followuser in user.follow.all %}
+    <div><a href="{% url 'insta:dm' followuser.id %}">{{ followuser.username }}</a></div>
+    <hr>
+{% endfor %}
+ 
+{% endblock %}

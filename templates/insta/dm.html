@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+ 
+{% block content %}
+<div><a href="{% url 'insta:top' %}">TOP</a></div>
+
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">送信</button>
+</form>
+
+{% for dmchat in dmchat_list %}
+<article>
+  <div>{{ dmchat.text }}</div>
+  <div>{{ dmchat.created_at }}</div>
+  <hr>
+</article>
+{% endfor %}
+ 
+{% endblock %}

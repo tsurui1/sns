@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% load insta_tag %}
+ 
+{% block content %}
+
+<h3 align="center">@{{ user.username }} TOP</h3>
+
+<div align="right"><a href="{% url 'insta:follow_user' %}">DM</a></div>
+
+<br>
+<div class="container" align="center">
+    <a class="item_1" href="{% url 'insta:top' %}">TOP</a>
+    <a class="item_1" href="{% url 'insta:search' %}">SEARCH</a>
+    <a class="item_1" href="{% url 'insta:post_create' %}">CREATE</a>
+    <a class="item_1" href="{% url 'insta:my_page' %}">MYPAGE</a>
+</div>
+<hr>
+
+{% for post in post_list %}
+
+<article align="center">
+    <h1><a href="{% url 'insta:user_page' post.user.id %}">@{{ post.user.username }}</a></h1>
+    <img src="{{ post.image.url }}" />
+
+    <form action="{% url 'insta:like' post.id %}" method="post">
+        {% csrf_token %}
+        {{ post.like_user.all | length }}
+        <input type="submit" value="LIKE">
+    </form>
+
+    <form action="{% url 'insta:bookmark' %}" method="post">
+        {% csrf_token %}
+        {{ post.bookmark_user.all | length }}
+        <input type="submit" value="BOOKMARK">
+    </form>
+
+    <div>@{{ post.user.username }}</div>
+    <div>{{ post.caption | linebreaksbr | remove_tag }}</div>
+    <div>
+        {% for tag in post.tags.all %}
+        <a href="{% url 'insta:post_tag' tag.id %}">{{ tag.name }}</a>
+        {% endfor %}
+    </div>
+    <div>{{ post.created_at }}</div>
+    <div><a href="{% url 'insta:post_chat' post.user.id %}">CHAT</a></div>
+</article>
+
+{% endfor %}
+
+<hr>
+
+<div class="pagination">
+    {% if page_obj.has_previous %}
+        <a href="?page={{ page_obj.previous_page_number }}">前のページへ</a>
+    {% endif %}
+
+    {% for link_page in page_obj.paginator.page_range %}
+        {% if link_page == page_obj.number %}
+            <span>{{ link_page }}</span>
+        {% else %}
+            <a href="?page={{ link_page }}">{{ link_page }}</a>
+        {% endif %}
+    {% endfor %}
+
+    {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}">次のページへ</a>
+    {% endif %}
+</div>
+
+{% endblock %}
