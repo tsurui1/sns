@@ -20,19 +20,19 @@
 <hr>
 
 {% if page_obj.has_previous %}
-    <a href="?page={{ page_obj.previous_page_number }}">前のページへ</a>
+    <a class="link_color" href="?page={{ page_obj.previous_page_number }}">前のページへ</a>
 {% endif %}
 
 {% for link_page in page_obj.paginator.page_range %}
     {% if link_page == page_obj.number %}
         <span>{{ link_page }}</span>
     {% else %}
-       <a href="?page={{ link_page }}">{{ link_page }}</a>
+       <a class="link_color" href="?page={{ link_page }}">{{ link_page }}</a>
     {% endif %}
 {% endfor %}
 
 {% if page_obj.has_next %}
-    <a href="?page={{ page_obj.next_page_number }}">次のページへ</a>
+    <a class="link_color" href="?page={{ page_obj.next_page_number }}">次のページへ</a>
 {% endif %}
 
 {% endblock %}

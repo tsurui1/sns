@@ -1,8 +1,10 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
+<link rel="stylesheet" href="{% static 'css/post.css' %}">
 
-<div><a href="{% url 'insta:post_chat' chat.id %}">BACK</a></div>
+<div><a class="link_color1" href="{% url 'insta:post_chat' chat.id %}"><b>BACK</b></a></div>
 
 <hr>
 

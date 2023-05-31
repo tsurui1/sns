@@ -12,26 +12,22 @@
 <body id="body2">
 
     <nav>
-        <div class="co1">
-        <ul align="left">
-            <li class="left-menu">
-                <b><div align="left" class="login_color">{{ user.username }}：ログイン中</div></b>
+        <ul class="base">
+            <li class="baseA">
+                <div align="left" class="login_color"><b>{{ request.user.username }}：ログイン中</b></div>
             </li>
-        </ul>
 
-        <ul align="right">
-            <li class="right-menu">
-                <div align="right">
-                    {% if user.is_authenticated %}
-                        <a class="link_color" href="{% url 'accounts:logout' %}">LOGOUT</a>
+            <li>
+                <div class="baseA">
+                    {% if request.user.is_authenticated %}
+                        <a class="link_color" href="{% url 'accounts:logout' %}"><b>LOGOUT</b></a>
                     {% else %}
-                        <a class="link_color" href="{% url 'accounts:accounts_create' %}">新規作成</a>
-                        <a class="link_color" href="{% url 'accounts:login' %}">LOGIN</a>
+                        <a class="link_color" href="{% url 'accounts:accounts_create' %}"><b>新規作成</b></a>
+                        <a class="link_color" href="{% url 'accounts:login' %}"><b>LOGIN</b></a>
                     {% endif %}
                 </div>
             </li>
         </ul>
-        </div>
     </nav>
 
     <main>

@@ -16,6 +16,11 @@ clear: both;
 margin: auto;
 align: center;
 }
+.right{
+align: right;
+color: #565b5e;
+clear: both;
+}
 
 
 .like{
@@ -40,11 +45,11 @@ clear: both;
 color: #aaaaaa;
 }
 
-#link_color1{
+.link_color1{
   text-decoration: none;
   color: #2e92c6;
 }
-#link_color1:hover {
+.link_color1:hover {
   color: #2753d1;
 }
 

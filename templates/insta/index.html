@@ -7,14 +7,14 @@
 
 <link rel="stylesheet" href="{% static 'css/post.css' %}">
 
-<b><div align="right"><a id="link_color1" href="{% url 'insta:follow_user' %}">DM</a></div></b>
+<div align="right"><a class="link_color1" href="{% url 'insta:follow_user' %}"><b>DM</b></a></div>
 <hr>
 
 {% for post in post_list %}
 
 <article class="post">
     <h1 class="left">
-        <a id="link_color1" href="{% url 'insta:user_page' post.user.id %}">@{{ post.user.username }}</a>
+        <a class="link_color1" href="{% url 'insta:user_page' post.user.id %}">@{{ post.user.username }}</a>
     </h1>
     <img class="center" src="{{ post.image.url }}" />
 
@@ -35,13 +35,16 @@
         <div>{{ post.caption | linebreaksbr | remove_tag }}</div>
         <div>
             {% for tag in post.tags.all %}
-            <a id="link_color1" href="{% url 'insta:post_tag' tag.id %}">{{ tag.name }}</a>
+            <a class="link_color1" href="{% url 'insta:post_tag' tag.id %}">{{ tag.name }}</a>
             {% endfor %}
         </div>
     </div>
-    <div class="created_at" >{{ post.created_at }}</div>
+    <div class="created_at">{{ post.created_at }}</div>
     <div class="left">
-        <a id="link_color1" href="{% url 'insta:post_chat' post.user.id %}">CHAT</a>
+        <a class="link_color1" href="{% url 'insta:post_chat' post.user.id %}">CHAT</a>
+    </div>
+    <div>
+        <a  class="link_color1" href="{% url 'insta:post_delete' post.id %}">DELETE</a>
     </div>
 </article>
 
@@ -52,19 +55,19 @@
 
 <div class="pagination">
     {% if page_obj.has_previous %}
-        <a id="link_color1" href="?page={{ page_obj.previous_page_number }}">前のページへ</a>
+        <a class="link_color1" href="?page={{ page_obj.previous_page_number }}">前のページへ</a>
     {% endif %}
 
     {% for link_page in page_obj.paginator.page_range %}
         {% if link_page == page_obj.number %}
             <span>{{ link_page }}</span>
         {% else %}
-            <a id="link_color1" href="?page={{ link_page }}">{{ link_page }}</a>
+            <a class="link_color1" href="?page={{ link_page }}">{{ link_page }}</a>
         {% endif %}
     {% endfor %}
 
     {% if page_obj.has_next %}
-        <a id="link_color1" href="?page={{ page_obj.next_page_number }}">次のページへ</a>
+        <a class="link_color1" href="?page={{ page_obj.next_page_number }}">次のページへ</a>
     {% endif %}
 </div>
 

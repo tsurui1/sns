@@ -3,7 +3,7 @@
 }
 
 #body2 {
-    padding-top: 50px;
+    padding-top: 90px;
 }
 
 
@@ -51,20 +51,12 @@ nav {
   right: 0;
 }
 
-.co1 {
-    align-items: center;
-    padding-top: 5px;
-    box-sizing: border-box;
-    display: flex;
-    grid-template-columns: 0.2fr 0.6fr 0.2fr;
-}
-
-.co2 {
+nav > div {
     align-items: center;
     padding-top: 5px;
     box-sizing: border-box;
     display: grid;
-    grid-template-columns: 0.2fr 0.2fr;
+    grid-template-columns: 0.2fr 0.6fr 0.2fr;
 }
 
 .container {
@@ -94,4 +86,19 @@ nav {
     justify-self: end;
     margin: 0;
     padding: 0;
+}
+
+.base {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    border: 1px;
+}
+
+.baseA {
+    border: 1px;
+    padding: 10px 30px;
+    margin: 0;
+    list-style: none;
+    text-align: center;
 }

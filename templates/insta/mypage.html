@@ -2,7 +2,7 @@
 {% load static %}
 {% block content %}
 <link rel="stylesheet" href="{% static 'css/post.css' %}">
-<h1 align="center">{{ user.username }} MYPAGE</h1>
+<h1 align="center"><b>MYPAGE</b></h1>
 
 <br>
 
@@ -17,8 +17,8 @@
     </div>
 
     <div class="box1">
-        {{ follow_list | length }}
-        {{ follower_list | length }}
+        {{ follow_list | length }} follow
+        {{ follower_list | length }} follower
     </div>
 
     <br>
@@ -30,8 +30,8 @@
     </div>
 </div>
 
-<div class="box2"><a id="link_color1" href="{% url 'insta:my_page_update' %}">プロフィールを編集する</a></div>
-<div class="box2"><a id="link_color1" href="{% url 'insta:bookmark' %}">BOOKMARK</a></div>
+<div class="box2"><a class="link_color1" href="{% url 'insta:my_page_update' %}">プロフィールを編集する</a></div>
+<div class="box2"><a class="link_color1" href="{% url 'insta:bookmark' %}">BOOKMARK</a></div>
 
 <hr>
 

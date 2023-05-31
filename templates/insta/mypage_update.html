@@ -1,7 +1,10 @@
 {% extends 'base.html' %}
- 
+{% load static %}
+
 {% block content %}
-<div><a href="{% url 'insta:my_page' %}">BACK</a></div>
+<link rel="stylesheet" href="{% static 'css/post.css' %}">
+
+<div><a class="link_color1" href="{% url 'insta:my_page' %}">BACK</a></div>
 <h3>プロフィールを編集する</h3>
 
 <form method="post" enctype="multipart/form-data">

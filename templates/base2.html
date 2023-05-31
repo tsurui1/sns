@@ -12,28 +12,28 @@
 <body id="body1">
 
     <nav>
-        <div class="container co1">
+        <div class="container">
             <ul id="nav_left">
                 <li class="left-menu">
-                    <b><div align="left" class="login_color">{{ user.username }}：ログイン中</div></b>
+                    <div align="left" class="login_color"><b>{{ user.username }}：ログイン中</b></div>
                 </li>
             </ul>
 
             <ul id="nav_center">
-                <li><a class="main-contents link_color" href="{% url 'insta:top' %}">TOP</a></li>
-                <li><a class="main-contents link_color" href="{% url 'insta:search' %}">SEARCH</a></li>
-                <li><a class="main-contents link_color" href="{% url 'insta:post_create' %}">CREATE</a></li>
-                <li><a class="main-contents link_color" href="{% url 'insta:my_page' %}">MYPAGE</a></li>
+                <li><a class="main-contents link_color" href="{% url 'insta:top' %}"><b>TOP</b></a></li>
+                <li><a class="main-contents link_color" href="{% url 'insta:search' %}"><b>SEARCH</b></a></li>
+                <li><a class="main-contents link_color" href="{% url 'insta:post_create' %}"><b>CREATE</b></a></li>
+                <li><a class="main-contents link_color" href="{% url 'insta:my_page' %}"><b>MYPAGE</b></a></li>
             </ul>
 
             <ul id="nav_right">
                 <li class="right-menu">
                 <div>
                     {% if user.is_authenticated %}
-                        <a  class="link_color" href="{% url 'accounts:logout' %}">LOGOUT</a>
+                    <a  class="link_color" href="{% url 'accounts:logout' %}"><b>LOGOUT</b></a>
                     {% else %}
-                        <a  class="link_color" href="{% url 'accounts:accounts_create' %}">新規作成</a>
-                        <a  class="link_color" href="{% url 'accounts:login' %}">LOGIN</a>
+                    <a  class="link_color" href="{% url 'accounts:accounts_create' %}"><b>新規作成</b></a>
+                    <a  class="link_color" href="{% url 'accounts:login' %}"><b>LOGIN</b></a>
                     {% endif %}
                 </div>
                 </li>

@@ -1,11 +1,13 @@
 {% extends 'base.html' %}
- 
+{% load static %}
 {% block content %}
-<div><a href="{% url 'insta:top' %}">TOP</a></div>
+<link rel="stylesheet" href="{% static 'css/post.css' %}">
+
+<div><a class="link_color1" href="{% url 'insta:top' %}"><b>BACK</b></a></div>
 <hr>
 
 {% for followuser in user.follow.all %}
-    <div><a href="{% url 'insta:dm' followuser.id %}">{{ followuser.username }}</a></div>
+<div style="margin-left:20px"><a class="link_color1" href="{% url 'insta:dm' followuser.id %}"><b>{{ followuser.username }}</b></a></div>
     <hr>
 {% endfor %}
  
