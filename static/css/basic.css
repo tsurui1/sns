@@ -1,5 +1,5 @@
 #body1 {
-    padding-top: 70px; /* ヘッダーの後ろに要素が隠れないようにするため */
+    padding-top: 80px; /* ヘッダーの後ろに要素が隠れないようにするため */
 }
 
 #body2 {
@@ -7,30 +7,23 @@
 }
 
 
-nav {
-  padding-top: 5px;
-  box-sizing: border-box;
-  position: fixed; /* ウィンドウを基準に画面に固定 */
-  top: 0; /* 上下の固定位置を上から0pxにする */
-  left: 0; /* 左右の固定位置を左から0pxにする */
-}
-
-
-ul {
+#nav_center {
   display: flex;
+  justify-content: center;
 }
+
 li {
   list-style: none;
 }
 
 
-#link_color{
+.link_color{
   display: block;
   text-decoration: none;
   color: #565b5e;
   margin-right: 35px;
 }
-#link_color:hover {
+.link_color:hover {
   color: #2e92c6;
 }
 
@@ -48,4 +41,57 @@ li {
 .post{
 max-width: 640px;
 margin: 0 auto;
+}
+
+nav {
+  background-color: #eaf2f4;
+  position: fixed; /* ウィンドウを基準に画面に固定 */
+  top: 0; /* 上下の固定位置を上から0pxにする */
+  left: 0; /* 左右の固定位置を左から0pxにする */
+  right: 0;
+}
+
+.co1 {
+    align-items: center;
+    padding-top: 5px;
+    box-sizing: border-box;
+    display: flex;
+    grid-template-columns: 0.2fr 0.6fr 0.2fr;
+}
+
+.co2 {
+    align-items: center;
+    padding-top: 5px;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: 0.2fr 0.2fr;
+}
+
+.container {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.nav-container {
+
+}
+
+.main-contents {
+  width: 70%;
+  padding: 10px;
+}
+
+
+#nav_left {
+    justify-content: start;
+    justify-self: start;
+    margin: 0;
+    padding: 0;
+}
+
+#nav_right {
+    justify-content: end;
+    justify-self: end;
+    margin: 0;
+    padding: 0;
 }
