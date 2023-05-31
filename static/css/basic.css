@@ -1,8 +1,51 @@
-.container{
-    display: flex;
-    justify-content: space-around;
+#body1 {
+    padding-top: 70px; /* ヘッダーの後ろに要素が隠れないようにするため */
 }
 
-.item_1{
-    background-color: #f0d9da;
+#body2 {
+    padding-top: 50px;
+}
+
+
+nav {
+  padding-top: 5px;
+  box-sizing: border-box;
+  position: fixed; /* ウィンドウを基準に画面に固定 */
+  top: 0; /* 上下の固定位置を上から0pxにする */
+  left: 0; /* 左右の固定位置を左から0pxにする */
+}
+
+
+ul {
+  display: flex;
+}
+li {
+  list-style: none;
+}
+
+
+#link_color{
+  display: block;
+  text-decoration: none;
+  color: #565b5e;
+  margin-right: 35px;
+}
+#link_color:hover {
+  color: #2e92c6;
+}
+
+#login_color{
+    color: #42b9d1
+}
+
+
+#bar_color{
+  width: 100%;
+  height: 60px;
+  background-color: #eaf2f4;
+}
+
+.post{
+max-width: 640px;
+margin: 0 auto;
 }

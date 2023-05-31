@@ -1,0 +1,64 @@
+.post{
+max-width: 660px;
+margin: 0 auto;
+border: solid;
+color: #eaeaea;
+padding-left: 20px;
+padding-right: 20px;
+}
+
+.left{
+align: left;
+color: #565b5e;
+clear: both;
+}
+.center{
+margin: auto;
+align: center;
+}
+
+
+.like{
+float: left;
+color: #565b5e;
+}
+.bookmark{
+float: right;
+color: #565b5e;
+}
+
+
+.caption{
+float: left;
+color: #565b5e;
+clear: both;
+}
+
+.created_at{
+float: left;
+clear: both;
+color: #aaaaaa;
+}
+
+#link_color1{
+  text-decoration: none;
+  color: #2e92c6;
+}
+#link_color1:hover {
+  color: #2753d1;
+}
+
+.box1{
+float: left;
+}
+.box2{
+text-align: center;
+clear: both;
+}
+
+#flex{
+width: 50vw;
+display: flex;
+flex-direction: row;
+flex-wrap: wrap;
+}

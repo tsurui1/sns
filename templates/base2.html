@@ -1,22 +1,41 @@
 <!DOCTYPE html>
+
+{% load static %}
 <html lang="ja">
 <head>
+    <link rel="stylesheet" href="{% static 'css/basic.css' %}">
     <meta charset="UTF-8">
-    <nav align="right">
-        {% if user.is_authenticated %}
-            <a href="{% url 'accounts:logout' %}">LOGOUT</a>
-        {% else %}
-            <a href="{% url 'accounts:accounts_create' %}">新規作成</a>
-            <a href="{% url 'accounts:login' %}">LOGIN</a>
-        {% endif %}
-    </nav>
-
-    <hr>
 
     <title>{% block title %}NEKO-STAGRAM{% endblock %}</title>
 
 </head>
-<body>
+<body id="body1">
+
+    <nav id="bar_color">
+        <b><ul align="center">
+            <li>
+                <b><div align="left" id="login_color">{{ user.username }}：ログイン中</div></b>
+            </li>
+
+            <li><a id="link_color" href="{% url 'insta:top' %}">TOP</a></li>
+            <li><a id="link_color" href="{% url 'insta:search' %}">SEARCH</a></li>
+            <li><a id="link_color" href="{% url 'insta:post_create' %}">CREATE</a></li>
+            <li><a id="link_color" href="{% url 'insta:my_page' %}">MYPAGE</a></li>
+
+            <li>
+                <div align="right">
+                    {% if user.is_authenticated %}
+                        <a  id="link_color" href="{% url 'accounts:logout' %}">LOGOUT</a>
+                    {% else %}
+                        <a  id="link_color" href="{% url 'accounts:accounts_create' %}">新規作成</a>
+                        <a  id="link_color" href="{% url 'accounts:login' %}">LOGIN</a>
+                    {% endif %}
+                </div>
+            </li>
+        </ul></b>
+        <hr>
+    </nav>
+
     {% block content %}{% endblock %}
 </body>
 </html>

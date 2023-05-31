@@ -1,16 +1,9 @@
-{% extends 'base.html' %}
-
+{% extends 'base2.html' %}
+{% load static %}
 {% block content %}
-<h4>SEARCH</h4>
+<link rel="stylesheet" href="{% static 'css/post.css' %}">
 
-<div><a href="{% url 'insta:top' %}">TOP</a></div>
-<div><a href="{% url 'insta:search' %}">SEARCH</a></div>
-<div><a href="{% url 'insta:post_create' %}">CREATE</a></div>
-<div><a href="{% url 'insta:my_page' %}">MYPAGE</a></div>
-
-<hr>
-
-<form method="GET">
+<form method="GET" align="center">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">送信</button>
@@ -19,7 +12,8 @@
 <hr>
 
 {% for post in post_list %}
-    <img src="{{ post.image.url }}" />
+    <a href="{% url 'insta:user_page' post.user.id %}"><img src="{{ post.image.url }}" /></a>
+
 {% endfor %}
 
 

@@ -1,47 +1,41 @@
-{% extends 'base.html' %}
-
+{% extends 'base2.html' %}
+{% load static %}
 {% block content %}
-
-<div class="container" align="center">
-    <a class="item_1" href="{% url 'insta:top' %}">TOP</a>
-    <a class="item_1" href="{% url 'insta:search' %}">SEARCH</a>
-    <a class="item_1" href="{% url 'insta:post_create' %}">CREATE</a>
-    <a class="item_1" href="{% url 'insta:my_page' %}">MYPAGE</a>
-</div>
-
-<hr>
-
-<h1 align="center">{{ user.username }} MYPAGE</h1>
+<link rel="stylesheet" href="{% static 'css/post.css' %}">
+<h1 align="center">{{ user.username }} PAGE</h1>
 
 <br>
 
-<style>
-    .float{
-        float: left;
-        margin-right: 20px;
-    }
-</style>
-
-<div class="container">
-    <div class="item_1">
+<div class="left">
+    <div class="box1">
         {% if user.bio %}
-        <img width="300" src="{{ user.bio.url }}" />
+            <img width="300" src="{{ user.bio.url }}" />
+        {% else %}
+            <img width="300" src="/media/user.png" />
         {% endif %}
     </div>
-    <div class="item_1">
-        {{ user.username }}
-        <br>
-        {{ user.profile }}
+
+    <div class="box1">
+        <form action="{% url 'insta:user_page' user.id %}" method="post">
+            {% csrf_token %}
+            {{ user.follower.all | length }}
+            <input type="submit" value="FOLLOW">
+        </form>
+
+        <div>
+            {{ user.username }}
+            <br>
+            {{ user.profile }}
+        </div>
     </div>
 </div>
 
-<hr>
+<hr class="box2">
 
 <article>
 
 {% for post in post_list %}
-    <img src="{{ post.image.url }}"/>
-    <div><a href="{% url 'insta:user_page' post.user.id %}">@{{ post.user.username }}</a></div>
+    <a class="box2" href="{% url 'insta:user_page' post.user.id %}"><img src="{{ post.image.url }}"/></a>
 {% endfor %}
 
 </article>

@@ -25,11 +25,13 @@ class Like(generic.TemplateView):
     def post(self, request, *args, **kwargs):
         pk = self.kwargs['pk']
         post = Post.objects.get(pk=pk)
-
         user = self.request.user
         likes = user.like
 
-        likes.add(post)
+        if post in likes.all():
+            likes.remove(post)
+        else:
+            likes.add(post)
 
         return redirect('insta:top')
 
@@ -85,6 +87,21 @@ class UserPage(generic.ListView):
         context['post_list'] = Post.objects.filter(user=user)
 
         return context
+
+    def post(self, request, *args, **kwargs):
+        target_user = CustomUser.objects.get(pk=kwargs['pk'])
+        user = self.request.user
+        follow_user = user.follow
+
+        if target_user in follow_user.all():
+            follow_user.remove(target_user)
+        else:
+            follow_user.add(target_user)
+
+        followers = user.follower
+        followers.add(target_user)
+
+        return redirect('insta:user_page', pk=kwargs['pk'])
 
 class PostDelete(generic.DeleteView):
     model = Post
@@ -250,13 +267,14 @@ class BookMark(generic.ListView):
     model = Post
 
     def post(self, request, *args, **kwargs):
-        pk = self.kwargs['pk']
-        post = Post.objects.get(pk=pk)
-
+        post = Post.objects.get(pk=kwargs['pk'])
         user = self.request.user
         bookmarks = user.bookmark
 
-        bookmarks.add(post)
+        if post in bookmarks.all():
+            bookmarks.remove(post)
+        else:
+            bookmarks.add(post)
 
         return redirect('insta:top')
 
