@@ -16,7 +16,9 @@
     <h1 class="left">
         <a class="link_color1" href="{% url 'insta:user_page' post.user.id %}">@{{ post.user.username }}</a>
     </h1>
+    {% if post.image %}
     <img class="center" src="{{ post.image.url }}" />
+    {% endif %}
 
     <form action="{% url 'insta:like' post.id %}" method="post" class="like">
         {% csrf_token %}
