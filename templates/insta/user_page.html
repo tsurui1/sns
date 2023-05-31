@@ -17,9 +17,12 @@
     </div>
 
     <div class="box1">
+        <div class="box1">
+            {{ follow_list | length }} follow
+            {{ follower_list | length }} follower
+        </div>
         <form action="{% url 'insta:user_page' user.id %}" method="post">
             {% csrf_token %}
-            <b>{{ user.follower.all | length }}</b>
             <input type="submit" value="FOLLOW">
         </form>
 

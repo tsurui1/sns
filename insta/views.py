@@ -18,6 +18,7 @@ class Top(generic.ListView):
 
         return post_list.order_by('-created_at')
 
+
 class Like(generic.TemplateView):
     template_name = 'insta/index.html'
     model = Post
@@ -91,7 +92,7 @@ class UserPage(generic.ListView):
     def post(self, request, *args, **kwargs):
         target_user = CustomUser.objects.get(pk=kwargs['pk'])
         user = self.request.user
-        follow_user = user.follow
+        follow_user = target_user.follow
 
         if target_user in follow_user.all():
             follow_user.remove(target_user)
